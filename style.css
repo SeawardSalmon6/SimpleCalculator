@@ -7,73 +7,67 @@
 }
 
 body {
-    overflow-x: hidden;
+    background: linear-gradient(45deg, black, blue);
+    min-height: 100vh;
+    min-width: 280px;
+    padding: 0 20px;
+    overflow: hidden;
 }
 
 .title {
-    margin: 1rem 0 2rem;
-    font-size: 1.5em;
+    margin: 1rem 0 1rem;
+    font-size: 1.4rem;
     text-align: center;
+    color: white;
 }
 
-.container {
-    background-color: darkgrey;
-    padding: 2rem;
-    max-width: 450px;
+#calculator {
+    background-color: black;
+    padding: 1.7rem;
     width: 100%;
+    height: 100%;
     margin: 0 auto;
-    height: 500px;
+    max-width: 380px;
+    border-radius: 4px;
 }
 
-#calcScreen {
+#calc-screen {
     background-color: white;
     width: 100%;
     height: 100px;
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
-    font-family: "Orbitron";
     text-align: right;
+    letter-spacing: 0.1rem;
+    font-family: "Orbitron";
+    font-size: 20px;
+    overflow: hidden;
 }
 
-.calcPad {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.numbersGrid {
-    max-width: 70%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.numbersGrid .row {
-    display: flex;
-    flex-direction: row-reverse;
-    width: 100%;
-    gap: 10px;
+.calc-pad {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(40px, auto));
+    grid-template-rows: repeat(5, minmax(40px, 70px));
+    grid-template-areas:
+        ". . . ."
+        ". . . ."
+        ". . . ."
+        ". . . equal"
+        "zero zero . equal";
+    gap: 8px 8px;
+    margin: 0 auto;
 }
 
 .key {
-    background: #e2e2e2;
-    padding: 0.5rem;
-    width: 100%;
-    height: 70px;
+    background: rgb(31, 31, 31);
+    color: white;
     font-size: 1.5rem;
     text-align: center;
     cursor: pointer;
+    border-radius: 4px;
 }
 
-.numbersGrid .key { width: 33%; }
-.row.lastRow { flex-direction: row; }
-.row.lastRow .key:first-of-type { width: 70%; }
-
-.operatorsGrid {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+.key:hover { background-color: rgba(31, 31, 31, .4); }
+.zero { grid-area: zero; }
+.equal { grid-area: equal; }
